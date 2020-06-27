@@ -82,10 +82,10 @@ function initObject() {
     var loader = new THREE.ImageLoader(manager);
     //loader.load('webgl_resource/models/texture/female.jpg', function (image) {
 
-    // loader.load('webgl_resource/models/cow.exr', function (image) {
-    //     texture.image = image;
-    //     texture.needsUpdate = true;
-    // });
+    loader.load('webgl_resource/models/cow.exr', function (image) {
+        texture.image = image;
+        texture.needsUpdate = true;
+    });
 
     var material = new THREE.MeshBasicMaterial({map: texture});
     var loader = new THREE.OBJLoader(manager);

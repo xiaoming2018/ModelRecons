@@ -58,6 +58,8 @@
                     filename = result.extend.filename;
                     objFileName = result.extend.objFileName;
                     // 重新渲染
+                    $("#input").empty();
+                    $("#output").empty();
                     start();
                     init();
                 }
@@ -126,12 +128,7 @@
 </div>
 <script src="layui/layui.js"></script>
 <script>
-    //JavaScript代码区域
-    // layui.use('element', function(){
-    //     var element = layui.element;
-    // });
     start();
-
 </script>
 <script src="./build/three.js"></script>
 <script type="module">
@@ -139,27 +136,21 @@
     import {GUI} from './webgl_resource/jsm/libs/dat.gui.module.js';
 
     import {EXRLoader} from './webgl_resource/jsm/loaders/EXRLoader.js';
-
     var params = {
         exposure: 2.0
     };
-
     var renderer, scene, camera;
     var width = $("#output").width();
     var height = $("#output").height();
-
     init();
-
     function init() {
         debugger;
         renderer = new THREE.WebGLRenderer({
             antialias: true
         });
         renderer.setSize(width, height);
-        //renderer.setClearColor(0xb9d3ff, 1);//设置背景颜色(淡蓝色)
         renderer.setClearColor(0xffffff, 1);
         renderer.shadowMap.enabled = true;    // 告诉渲染器需要
-        //document.getElementById("output").appendChild(renderer.domElement);
         renderer.toneMapping = THREE.ReinhardToneMapping;
         renderer.toneMappingExposure = params.exposure;
         renderer.outputEncoding = THREE.sRGBEncoding;
@@ -167,7 +158,6 @@
         scene = new THREE.Scene();
         var aspect = width / height;
         camera = new THREE.OrthographicCamera(-aspect, aspect, 1, -1, 0, 1);
-        //camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
 
         debugger;
         if (prefiex != null)
@@ -249,6 +239,7 @@
                     success: function () {
                         console.info("success");
                         alert("xml 更新成功");
+                        test(); // 重新计算
                     }
                 })
             }
