@@ -15,10 +15,10 @@ public class ListenerController {
     JavaShell javaShell = new JavaShell();
     FileUpload fileUpload = new FileUpload();
 
-    public String filename = null;
-    public String objFileName = null;
-    public Parameter parameter = new Parameter();
-    public String filePath = "/home/xiaoming/apache-tomcat-8.5.46/webapps/ModelRecons/resource/cow.xml";
+    public static String filename = "cow.xml";
+    public static String objFileName = "cow.obj";
+    public static Parameter parameter = new Parameter();
+    public static String filePath = "/home/xiaoming/apache-tomcat-8.5.46/webapps/ModelRecons/resource/cow.xml";
 
     @RequestMapping("/shell")
     @ResponseBody
