@@ -2,6 +2,7 @@ var scene;
 var camera;
 var width;
 var height;
+// var objFileName;
 
 function initscene() {
     scene = new THREE.Scene();
@@ -80,15 +81,17 @@ function initObject() {
     var texture = new THREE.Texture();
     var loader = new THREE.ImageLoader(manager);
     //loader.load('webgl_resource/models/texture/female.jpg', function (image) {
-    loader.load('webgl_resource/models/cow.exr', function (image) {
-        texture.image = image;
-        texture.needsUpdate = true;
-    });
+
+    // loader.load('webgl_resource/models/cow.exr', function (image) {
+    //     texture.image = image;
+    //     texture.needsUpdate = true;
+    // });
 
     var material = new THREE.MeshBasicMaterial({map: texture});
     var loader = new THREE.OBJLoader(manager);
     //loader.load('webgl_resource/models/obj/Female.obj', function (object) {
-    loader.load('webgl_resource/models/cow.obj', function (object) {
+    debugger;
+    loader.load(pre_name + ".obj", function (object) {
         var mesh = new THREE.Mesh(object,material);
         object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
